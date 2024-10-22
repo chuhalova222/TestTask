@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.codeborne:selenide:7.4.0'
+    implementation 'io.qameta.allure:allure-selenide:2.21.0'
+}
+
+task runTestNG(type: Test) {
+    useTestNG() {
+        // Specify the testng.xml file path
+        suites 'src/test/resources/UiTestNg.xml'
+    }
+}

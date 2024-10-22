@@ -1,0 +1,21 @@
+<configuration scan="true" scanPeriod="60 seconds">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>[%thread] %highlight(%-5level) %cyan(%logger{15}) -%kvp -%msg %n</pattern>
+            <includeCallerData>true</includeCallerData>
+            <fieldNames>
+                <version>[ignore]</version>
+                <thread>[ignore]</thread>
+                <levelValue>[ignore]</levelValue>
+                <level>severity</level>
+            </fieldNames>
+        </encoder>
+    </appender>
+
+    <!-- root logger -->
+    <variable name="ROOT_LOG_LEVEL" value="${ROOT_LOG_LEVEL:-INFO}" />
+    <root level="${ROOT_LOG_LEVEL}">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

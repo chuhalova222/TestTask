@@ -1,0 +1,168 @@
+1) Countries are shown after click on dropdown "Country" menu
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user clicks on dropdown "Country" menu
+Then countries are shown in opened menu
+
+2) Incorrect characters aren't allowed in phone number form
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+Type of characters: letters, symbols, spaces
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enter type of characters: letters, symbols, spaces in phone number form
+Then nothing appears in phone number form
+
+3) Incorrect characters aren't allowed in phone number form after several correctly entered numbers
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened,
+1-3 numbers are entered to the login form
+Type of characters: letters, symbols, spaces
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+And 1-3 numbers are entered to the login form
+When user enter type of characters: letters, symbols, spaces in phone number form
+Then nothing appears after already entered characters in phone number form
+
+5) More than 9 characters aren't allowed in phone number form
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters 10 characters in phone number form
+Then 10th character doesn't appear in phone number form
+
+6) Error is presented when only part of prefix is entered
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters 4
+And click out of the form
+Then "Mobile provider prefix is not correct." validation error displayed
+
+7) Error is presented when only correct prefix is entered
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters 44
+And click out of the form
+Then "The length should be 9 characters." validation error displayed
+
+10) Login doesn't work  when nothing is entered to password form but phone is correct
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user entered correct phone number started with 44 and with size 9
+And doesn't entered password
+And click on login button
+Then "Password is required." validation error displayed
+And new page isn't opened
+
+11) Login doesn't work when nothing is entered to phone number form but password is entered
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user entered correct password
+And doesn't entered phone number
+And click on login button
+Then "Phone number is required." validation error displayed
+And new page isn't opened
+
+12) Error disappears when 9 numbers with 44 prefix are entered to the phone number form
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+44 is entered in phone number form
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+And 44 is entered in phone number form
+When user enters 7 more numbers
+Then "The length should be 9 characters." validation error disappears
+
+13) Login doesn't work when password is entered and incorrect phone prefix is entered to phone number form
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user entered correct password
+And entered phone number started not with 44
+And click on login button
+Then "Mobile provider prefix is not correct." validation error displayed
+And new page isn't opened
+
+14) Password is visible when visibility button is on
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters password
+And clicks on visibility button
+Then visibility button changes it's view to eye without line
+And password is presented
+And presented password = as entered
+
+15) Password disappears after visibility button is off
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+Password is entered
+Visibility button is in on state
+Password is visible
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+And password is entered
+And visibility button is in on state
+And password is visible
+When user clicks on visibility button
+Then visibility button changes it's view to eye with line
+And password isn't presented
+
+16) Forgot password page is opened after click on "Forgot password?" link
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user clicks on "Forgot password?" link
+Then "Forgot password" page https://s.gsb.co.zm/authentication/forgot is opened
+
+17) Register page is opened after click on "Register" link
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user clicks on "Register" link
+Then "Register" page https://s.gsb.co.zm/authentication/register is opened
+
+18) Login is successful when phone and password are entered correctly
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters valid phone number started from 44 and with the size 9 numbers
+And password is valid for this phone number
+Then user successfully logged in
+
+18) Incorrect password error when phone is entered correctly but password is incorrect for this phone
+Preconditions: Login page https://s.gsb.co.zm/authentication/login is opened
+
+Given login page https://s.gsb.co.zm/authentication/login is opened
+When user enters valid phone number started from 44 and with the size 9 numbers
+And password is not valid for this phone number
+Then "The Phone number or password entered is invalid" error message displayed
+
+Test design technics were used:
+
+Boundary value analysis:
+Boundary value analysis technic was used for verifying phone number length and phone number prefix length
+There are test cases
+when we enter 10 numbers that is incorrect,
+when we use 9 numbers and correct password and login is successful,
+when we use 1 correct number for phone code and prefix error is presented,
+when we use 2 correct numbers for phone code and prefix error isn't presented
+
+Equivalence partitioning:
+Equivalence partitioning was used for verifying correct and incorrect phone number and password values
+There are test cases
+when we enter correct or incorrect password,
+when we enter correct or incorrect phone number
+
+Error guessing:
+Error guessing was used for verifying user errors like invalid characters in phone number form or invalid country code
+
+State transition testing:
+State transition testing was used for testing transitions like redirecting to forgot password page or registration page.
+
+Pairwise testing:
+Pairwise testing was used when we test different errors for phone number and password
+and in some cases test clicking out of the form
+and in some cases entering another field correctly and clicking logic button after that
+

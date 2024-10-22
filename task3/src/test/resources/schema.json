@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "st": {
+            "type": "number"
+          },
+          "gt": {
+            "type": "string"
+          },
+          "gn": {
+            "type": "string"
+          },
+          "bk": {
+            "type": "boolean"
+          },
+          "et": {
+            "type": "number"
+          },
+          "o": {
+            "type": "number"
+          },
+          "cid": {
+            "type": "number"
+          },
+          "sci": {
+            "type": "number"
+          },
+          "ng": {
+            "type": "boolean"
+          },
+          "sid": {
+            "type": "number"
+          },
+          "sn": {
+            "type": "string"
+          },
+          "co": {
+            "type": ["number", "null"]
+          },
+          "cn": {
+            "type": "string"
+          },
+          "lid": {
+            "type": "number"
+          },
+          "lo": {
+            "type": "number"
+          },
+          "ln": {
+            "type": "string"
+          },
+          "h": {
+            "type": "string"
+          },
+          "a": {
+            "type": "string"
+          },
+          "btc": {
+            "type": "number"
+          },
+          "bts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "n": {
+                  "type": "string"
+                },
+                "o": {
+                  "type": "number"
+                },
+                "s": {
+                  "type": "number"
+                },
+                "odds": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "n": {
+                        "type": "string"
+                      },
+                      "s": {
+                        "type": "number"
+                      },
+                      "oc": {
+                        "type": "number"
+                      },
+                      "p": {
+                        "type": "string"
+                      },
+                      "l": {
+                        "type": "string"
+                      },
+                      "or": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "n",
+                      "s",
+                      "oc",
+                      "p"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "n",
+                "o",
+                "s",
+                "odds"
+              ]
+            }
+          },
+          "hco": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "st",
+          "gt",
+          "gn",
+          "bk",
+          "et",
+          "o",
+          "cid",
+          "sci",
+          "ng",
+          "sid",
+          "sn",
+          "cn",
+          "lid",
+          "lo",
+          "ln",
+          "h",
+          "a",
+          "btc",
+          "bts",
+          "hco"
+        ]
+      }
+    },
+    "ec": {
+      "type": "number"
+    },
+    "tec": {
+      "type": "number"
+    },
+    "lts": {
+      "type": "number"
+    },
+    "acid": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "result": {},
+    "isSuccessfull": {
+      "type": "boolean"
+    },
+    "userInfo": {}
+  },
+  "required": [
+    "data",
+    "ec",
+    "tec",
+    "lts",
+    "acid",
+    "result",
+    "isSuccessfull",
+    "userInfo"
+  ]
+}
