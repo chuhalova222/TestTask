@@ -1,12 +1,12 @@
 package org.api.models;
 
-import lombok.ToString;
+import lombok.Data;
 
 import javax.annotation.Nullable;
 import java.util.Date;
 import java.util.List;
 
-@ToString
+@Data
 public class GetEventsResponse {
 
     public List<Datum> data;
@@ -20,6 +20,7 @@ public class GetEventsResponse {
     @Nullable
     public String userInfo;
 
+    @Data
     public static class Bt {
         public int id;
         public String n;
@@ -27,7 +28,7 @@ public class GetEventsResponse {
         public int s;
         public List<Odd> odds;
     }
-
+    @Data
     public static class Datum {
         public int id;
         public int st;
@@ -53,6 +54,7 @@ public class GetEventsResponse {
         public boolean hco;
     }
 
+    @Data
     public static class Odd {
         public String n;
         public int s;

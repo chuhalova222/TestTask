@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
+import static org.api.utils.JsonUtil.prettyPrint;
 
 @Slf4j
 public class Task3Test extends BaseTest {
@@ -18,17 +19,21 @@ public class Task3Test extends BaseTest {
 
     @Test
     public void verifyJsonSchemaForGetEventsEndpoint() throws IOException, ProcessingException {
-        var response1 = given()
+        var response = given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(ENDPOINT)
                 .then()
                 .extract()
                 .response();
-        var responseAsDto = response1.as(GetEventsResponse.class);
-        log.info("Response: " + responseAsDto);
+//      4. Use serialization/ deserialization for request/ response
+        var responseAsDto = response.as(GetEventsResponse.class);
 
-        var responseAsString = response1.asString();
+        var responseAsString = response.asString();
+        log.info("Response:\n" + prettyPrint(responseAsString));
+        //todo need to fix this verification, do not work now...
+//       3. Validate JSON schema for this API call
         JsonUtil.validateJsonAgainstSchema(responseAsString, "/schema.json");
     }
+
 }
