@@ -1,7 +1,6 @@
 package org.api.utils;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -13,20 +12,20 @@ import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 import lombok.experimental.UtilityClass;
-import org.testng.Assert;
 
 import java.io.IOException;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @UtilityClass
 public class JsonUtil {
 
     public void validateJsonAgainstSchema(String jsonFile, String schemaPath) throws IOException, ProcessingException {
-        JsonNode fileNode;
-        fileNode = getMapper().readTree(jsonFile);
+        var fileNode = getMapper().readTree(jsonFile);
         var schemaNode = JsonLoader.fromResource(schemaPath);
         var schema = JsonSchemaFactory.byDefault().getJsonSchema(schemaNode);
         var validatedSchema = schema.validate(fileNode);
-        Assert.assertTrue(validatedSchema.isSuccess());
+        assertThat(validatedSchema.isSuccess()).as("Schema validation failed").isTrue();
     }
 
     public ObjectMapper getMapper() {

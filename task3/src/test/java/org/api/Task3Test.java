@@ -32,7 +32,7 @@ public class Task3Test extends BaseTest {
         var responseAsString = response.asString();
         log.info("Response:\n" + prettyPrint(responseAsString));
         //todo need to fix this verification, do not work now...
-//       3. Validate JSON schema for this API call
+//      3. Validate JSON schema for this API call
         JsonUtil.validateJsonAgainstSchema(responseAsString, "/schema.json");
     }
 
